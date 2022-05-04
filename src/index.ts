@@ -93,7 +93,7 @@ while(true) {
       ❌ <b>На граббере возникла ошибка:</b>
       
       <code>${error.stack}</code>
-    `.replace(/^ +/gm, ''), {
+    `.replace(/^ +/gm, '').replace(/<\/?(?!(?:em|i|strong|b|a|code)\b)[a-z](?:[^>"']|"[^"]*"|'[^']*')*>/gm, ''), {
       parse_mode: 'HTML'
     })
   }
