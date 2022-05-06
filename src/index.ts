@@ -29,7 +29,15 @@ while(true) {
     // Get walls
     for(const wallId of VK_WALLS_IDS) {
 
-      const ms = randomNumber(15 * 60 * 1000, 45 * 60 * 1000)
+      const ms = (() => {
+
+        const date = new Date()
+
+        if(date.getHours() > 6 || date.getHours() < 22) {
+          return randomNumber(3 * 60 * 1000, 8 * 60 * 1000)
+        }
+        return randomNumber(15 * 60 * 1000, 45 * 60 * 1000)
+      })()
 
       console.log(`Waiting for ${ms/1000} seconds...`)
       await asyncSleep(ms)
